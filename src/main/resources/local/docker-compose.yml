@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:15 # Recomenda-se usar uma versão específica em vez de 'latest'
+    container_name: postgres_ecommerce_db # Nome fácil de identificar para o container
+    environment:
+      POSTGRES_DB: ecommerce       # Define o nome do banco de dados a ser criado
+      POSTGRES_USER: postgres      # Define o nome de usuário
+      POSTGRES_PASSWORD: postgres  # Define a senha do usuário
+    ports:
+      - "5432:5432" # Mapeia a porta 5432 do host para a porta 5432 do container
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Cria um volume para persistir os dados
+    restart: unless-stopped # Reinicia o container a menos que seja parado manualmente
+
+volumes:
+  postgres_data: # Define o volume nomeado para persistência dos dados
