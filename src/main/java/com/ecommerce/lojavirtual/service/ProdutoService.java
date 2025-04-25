@@ -9,6 +9,7 @@ import com.ecommerce.lojavirtual.model.Usuario;
 import com.ecommerce.lojavirtual.repository.ProdutoRepository;
 import com.ecommerce.lojavirtual.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -22,9 +23,12 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ProdutoService {
 
-    private final ProdutoRepository produtoRepository;
-    private final CategoriaService categoriaService;
-    private final UsuarioRepository usuarioRepository;
+    @Autowired
+    private  ProdutoRepository produtoRepository;
+    @Autowired
+    private  CategoriaService categoriaService;
+    @Autowired
+    private  UsuarioRepository usuarioRepository;
 
     public Page<ProdutoDTO> listarProdutosAtivos(Pageable pageable) {
         return produtoRepository.findByAtivoTrue(pageable)

@@ -4,6 +4,7 @@ import com.ecommerce.lojavirtual.dto.EntregaDTO;
 import com.ecommerce.lojavirtual.model.Entrega;
 import com.ecommerce.lojavirtual.service.EntregaService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class EntregaController {
 
-    private final EntregaService entregaService;
+    @Autowired
+    private  EntregaService entregaService;
 
     @GetMapping("/pedido/{pedidoId}")
     public ResponseEntity<EntregaDTO> buscarEntregaPorPedidoId(@PathVariable Long pedidoId) {

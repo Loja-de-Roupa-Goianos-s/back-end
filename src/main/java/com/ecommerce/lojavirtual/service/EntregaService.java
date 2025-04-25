@@ -7,6 +7,7 @@ import com.ecommerce.lojavirtual.model.Pedido;
 import com.ecommerce.lojavirtual.repository.EntregaRepository;
 import com.ecommerce.lojavirtual.repository.PedidoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,8 +18,10 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class EntregaService {
 
-    private final EntregaRepository entregaRepository;
-    private final PedidoRepository pedidoRepository;
+    @Autowired
+    private  EntregaRepository entregaRepository;
+    @Autowired
+    private  PedidoRepository pedidoRepository;
 
     public EntregaDTO buscarEntregaPorPedidoId(Long pedidoId) {
         Pedido pedido = pedidoRepository.findById(pedidoId)

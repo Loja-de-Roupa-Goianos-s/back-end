@@ -6,6 +6,7 @@ import com.ecommerce.lojavirtual.model.Usuario;
 import com.ecommerce.lojavirtual.service.CarrinhoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class CarrinhoController {
 
-    private final CarrinhoService carrinhoService;
+    @Autowired
+    private  CarrinhoService carrinhoService;
 
     @GetMapping
     public ResponseEntity<CarrinhoDTO> buscarCarrinho(@AuthenticationPrincipal Usuario usuario) {

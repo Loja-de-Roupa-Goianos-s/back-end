@@ -7,6 +7,7 @@ import com.ecommerce.lojavirtual.model.Usuario;
 import com.ecommerce.lojavirtual.service.PedidoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class PedidoController {
 
-    private final PedidoService pedidoService;
+    @Autowired
+    private  PedidoService pedidoService;
 
     @GetMapping
     public ResponseEntity<Page<PedidoDTO>> listarPedidosDoUsuario(

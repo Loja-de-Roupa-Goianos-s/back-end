@@ -5,6 +5,7 @@ import com.ecommerce.lojavirtual.exception.RecursoNaoEncontradoException;
 import com.ecommerce.lojavirtual.model.*;
 import com.ecommerce.lojavirtual.repository.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,14 +20,20 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class PedidoService {
-
-    private final PedidoRepository pedidoRepository;
-    private final ItemPedidoRepository itemPedidoRepository;
-    private final UsuarioRepository usuarioRepository;
-    private final CarrinhoService carrinhoService;
-    private final ProdutoService produtoService;
-    private final PagamentoRepository pagamentoRepository;
-    private final EntregaRepository entregaRepository;
+    @Autowired
+    private  PedidoRepository pedidoRepository;
+    @Autowired
+    private  ItemPedidoRepository itemPedidoRepository;
+    @Autowired
+    private  UsuarioRepository usuarioRepository;
+    @Autowired
+    private  CarrinhoService carrinhoService;
+    @Autowired
+    private  ProdutoService produtoService;
+    @Autowired
+    private  PagamentoRepository pagamentoRepository;
+    @Autowired
+    private  EntregaRepository entregaRepository;
 
     public Page<PedidoDTO> listarPedidosPorUsuario(Long usuarioId, Pageable pageable) {
         Usuario usuario = usuarioRepository.findById(usuarioId)

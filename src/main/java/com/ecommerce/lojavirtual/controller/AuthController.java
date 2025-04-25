@@ -7,6 +7,7 @@ import com.ecommerce.lojavirtual.security.JwtTokenProvider;
 import com.ecommerce.lojavirtual.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,9 +26,12 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final AuthenticationManager authenticationManager;
-    private final JwtTokenProvider tokenProvider;
-    private final UsuarioService usuarioService;
+    @Autowired
+    private  AuthenticationManager authenticationManager;
+    @Autowired
+    private  JwtTokenProvider tokenProvider;
+    @Autowired
+    private  UsuarioService usuarioService;
 
     @PostMapping("/login")
     public ResponseEntity<?> autenticarUsuario(@Valid @RequestBody LoginDTO loginDTO) {

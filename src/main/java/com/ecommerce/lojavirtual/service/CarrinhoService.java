@@ -11,6 +11,7 @@ import com.ecommerce.lojavirtual.repository.CarrinhoRepository;
 import com.ecommerce.lojavirtual.repository.ItemCarrinhoRepository;
 import com.ecommerce.lojavirtual.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,10 +26,14 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CarrinhoService {
 
-    private final CarrinhoRepository carrinhoRepository;
-    private final ItemCarrinhoRepository itemCarrinhoRepository;
-    private final UsuarioRepository usuarioRepository;
-    private final ProdutoService produtoService;
+    @Autowired
+    private  CarrinhoRepository carrinhoRepository;
+    @Autowired
+    private  ItemCarrinhoRepository itemCarrinhoRepository;
+    @Autowired
+    private  UsuarioRepository usuarioRepository;
+    @Autowired
+    private  ProdutoService produtoService;
 
     public CarrinhoDTO buscarCarrinhoPorUsuario(Long usuarioId) {
         Usuario usuario = usuarioRepository.findById(usuarioId)

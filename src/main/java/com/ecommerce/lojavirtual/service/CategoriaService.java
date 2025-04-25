@@ -6,6 +6,7 @@ import com.ecommerce.lojavirtual.exception.RecursoNaoEncontradoException;
 import com.ecommerce.lojavirtual.model.Categoria;
 import com.ecommerce.lojavirtual.repository.CategoriaRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +17,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CategoriaService {
 
-    private final CategoriaRepository categoriaRepository;
+    @Autowired
+    private CategoriaRepository categoriaRepository;
 
     public List<CategoriaDTO> listarTodasCategorias() {
         return categoriaRepository.findAll().stream()

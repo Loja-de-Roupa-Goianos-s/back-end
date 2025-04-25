@@ -4,7 +4,7 @@ import com.ecommerce.lojavirtual.model.Usuario;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -13,9 +13,9 @@ import java.security.Key;
 import java.util.Date;
 
 @Component
-@Slf4j
 public class JwtTokenProvider {
 
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(JwtTokenProvider.class);
     @Value("${jwt.secret}")
     private String jwtSecret;
 

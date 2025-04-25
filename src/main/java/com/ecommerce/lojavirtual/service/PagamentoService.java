@@ -7,6 +7,7 @@ import com.ecommerce.lojavirtual.model.Pedido;
 import com.ecommerce.lojavirtual.repository.PagamentoRepository;
 import com.ecommerce.lojavirtual.repository.PedidoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,8 +17,10 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class PagamentoService {
 
-    private final PagamentoRepository pagamentoRepository;
-    private final PedidoRepository pedidoRepository;
+    @Autowired
+    private PagamentoRepository pagamentoRepository;
+    @Autowired
+    private PedidoRepository pedidoRepository;
 
     public PagamentoDTO buscarPagamentoPorPedidoId(Long pedidoId) {
         Pedido pedido = pedidoRepository.findById(pedidoId)

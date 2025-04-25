@@ -8,6 +8,7 @@ import com.ecommerce.lojavirtual.model.Usuario;
 import com.ecommerce.lojavirtual.repository.UsuarioRepository;
 import com.ecommerce.lojavirtual.security.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,8 +23,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UsuarioService implements CustomUserDetailsService {
 
-    private final UsuarioRepository usuarioRepository;
-    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private  UsuarioRepository usuarioRepository;
+    @Autowired
+    private  PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

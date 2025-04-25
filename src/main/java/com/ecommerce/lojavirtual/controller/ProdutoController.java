@@ -5,6 +5,7 @@ import com.ecommerce.lojavirtual.model.Usuario;
 import com.ecommerce.lojavirtual.service.ProdutoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProdutoController {
 
-    private final ProdutoService produtoService;
+    @Autowired
+    private  ProdutoService produtoService;
 
     @GetMapping
     public ResponseEntity<Page<ProdutoDTO>> listarProdutosAtivos(Pageable pageable) {
